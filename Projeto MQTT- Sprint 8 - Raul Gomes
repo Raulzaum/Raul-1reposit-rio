@@ -32,11 +32,11 @@ void loop(){
   estado_sensor = digitalRead(pino2); ///"estado_sensor" passa a obter o valor do "digitalRead", onde a mesma pode variar entre 0 e 1
 
 if(estado_sensor == 1){
-     mensagem = mqttClient.publish("A porta está aberta!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
+     mensagem = mqttClient.publish("sala11","A porta está aberta!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
      Serial.println(mensagem);
 }
 else{
-     mensagem = mqttClient.publish("A porta está fechada!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
+     mensagem = mqttClient.publish("sala11","A porta está fechada!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
      Serial.println(mensagem);
 }
 
