@@ -6,16 +6,16 @@ int pino2 = 2; ///variável definidda para o servidor
 boolean mensagem;
 boolean estado_sensor;
 
-byte mac[] ={0xF0,0x8E,0x4A,0x06,0x02};
-boolean mensagem;
+byte mac[] ={0x2A,0x8C,0xC1,0x21,0xEE,0xA4};
 EthernetClient client; /// apresenta um cliente Ethernet
 PubSubClient mqttClient(client);
+
 void setup() {
   Ethernet.begin(mac); /// Controlador Ethernet
-  
+  pinMode(2,INPUT_PULLUP);
   Serial.begin(9600);
-  
-  mqttClient.setServer("3.82.94.158",1883);
+
+  mqttClient.setServer("54.144.190.205",1883);
 
   Serial.print("O IP do Arduino e:"); /// Dentro do Monitor Serial, são manifestadas informações sobre o IP
   Serial.println(Ethernet.localIP());
@@ -32,13 +32,12 @@ void loop(){
   estado_sensor = digitalRead(pino2); ///"estado_sensor" passa a obter o valor do "digitalRead", onde a mesma pode variar entre 0 e 1
 
 if(estado_sensor == 1){
-     mensagem = mqttClient.publish("sala11","A porta está aberta!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
-     Serial.println(mensagem);
+     mensagem = mqttClient.publish("sala11","A porta está ABERTA!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
+     Serial.println("A porta está ABERTA!");
 }
 else{
-     mensagem = mqttClient.publish("sala11","A porta está fechada!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
-     Serial.println(mensagem);
+     mensagem = mqttClient.publish("sala11","A porta está FECHADA!"); /// Só aparecerá esta mensagem caso a resposta do "digitalRead" for 1
+     Serial.println("A porta está FECHADA!");
 }
-
   mqttClient.loop();
 }
