@@ -26,7 +26,6 @@ void setup() {
   Serial.print("O Gateway do Arduino e:"); ///Dentro do Monitor Serial, são manifestadas informações sobre o Gateway
   Serial.println(Ethernet.gatewayIP());
 
-  delay(5000);
 }
 void loop(){
   mqttClient.connect("raulgn");
@@ -42,5 +41,4 @@ else{
 }
 
   MqttClient.loop();
-  delay(500);
 }
