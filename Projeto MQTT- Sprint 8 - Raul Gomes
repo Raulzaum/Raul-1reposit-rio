@@ -4,12 +4,6 @@
 
 int pino2 = 2; ///variável definidda para o servidor
 boolean mensagem;
-#include <PubSubClient.h>
-#include <UIPEthernet.h>
-#include <SPI.h>
-
-int pino2 = 2; ///variável definidda para o servidor
-boolean mensagem;
 boolean estado_sensor;
 
 byte mac[] ={0x2A,0x8C,0xC1,0x21,0xEE,0xA4};
